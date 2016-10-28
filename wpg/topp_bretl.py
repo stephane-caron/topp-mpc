@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2016 Quang-Cuong Pham <cuong.pham@normalesup.org>
 #
-# This file is part of topp-mpc.
+# This file is part of topp-mpc <https://github.com/stephane-caron/topp-mpc>.
 #
 # topp-mpc is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
