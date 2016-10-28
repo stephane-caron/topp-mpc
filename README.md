@@ -17,6 +17,8 @@ trajectories, which allows us to integrate it into a fast control loop. We
 implement the complete control pipeline and showcase it in simulations where a
 model of the HRP-4 humanoid climbs up and down a series of hills. 
 
+<img src=".figure.png" width="700" />
+
 ## Installation
 
 On Ubuntu 14.04, you will need to [install
@@ -32,12 +34,10 @@ To run simulations in stepping mode, you can use ``sim.step(n)`` with ``n`` the
 number of steps. The state of all objects can be introspected using globals
 ``robot``, ``fsm`` (state machine), ``mpc`` (preview controller), etc.
 
-### Note
+### Robot model
 
 Due to the copyright problem, we cannot release the COLLADA model ``HRP4R.dae``
 used to produce the accompanying video and paper illustrations. It is replaced
 at run time by
 [JVRC-1](https://github.com/stephane-caron/openrave_models/tree/master/JVRC-1),
 which has the same kinematic chain.
-
-<img src=".figure.png" width="700" />
