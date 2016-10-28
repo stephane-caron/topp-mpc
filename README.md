@@ -27,12 +27,13 @@ and [TOPP](https://github.com/quangounet/TOPP).
 
 ## Usage
 
-Run the main script ``./walk.py``. Then, start simulations by typing
-``sim.start()`` in the Python prompt.
+Run the main script ``./walk.py``. Then, you can
 
-To run simulations in stepping mode, you can use ``sim.step(n)`` with ``n`` the
-number of steps. The state of all objects can be introspected using globals
-``robot``, ``fsm`` (state machine), ``mpc`` (preview controller), etc.
+- start simulations by typing ``sim.start()`` in the Python prompt, or
+- use ``sim.step(n)`` to run simulations in stepping mode for ``n`` steps.
+
+The state of all objects can be introspected using globals ``robot``, ``fsm``
+(state machine), ``mpc`` (preview controller), etc.
 
 ### Robot model
 
