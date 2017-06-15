@@ -127,9 +127,10 @@ class ForceChecker(DrawerProcess):
         support = fsm.cur_stance.find_supporting_forces(
             wrench, preview_buffer.com.p, robot.mass)
         if not support:
-            self.handles = []
-            viewer.SetBkgndColor([.8, .4, .4])
-            self.last_bkgnd_switch = time.time()
+            # self.handles = []
+            # viewer.SetBkgndColor([.8, .4, .4])
+            # self.last_bkgnd_switch = time.time()
+            pass
         else:
             self.handles = [
                 draw_force(c, fc, scale=self.force_scale)
@@ -384,7 +385,7 @@ def initialize_robot():
         },
         weights={
             'com': 10.,
-            'contact': 10000.,
+            'contact': 1000.,
             'link_pose': 100.,
         })
     robot.set_dof_values([1.], [robot.TRANS_Z])  # warm-start PG
@@ -395,7 +396,7 @@ def initialize_robot():
     robot.ik.add_task(ContactTask(robot, robot.left_foot, stance.left_foot))
     robot.ik.add_task(ContactTask(robot, robot.right_foot, stance.right_foot))
     robot.ik.add_task(MinVelocityTask(robot, weight=1.))
-    robot.solve_ik()
+    robot.solve_ik(max_it=50)
 
     # active_dofs += [robot.L_ELBOW_P, robot.R_ELBOW_P]
     active_dofs += [robot.L_SHOULDER_R, robot.R_SHOULDER_R]
@@ -424,7 +425,13 @@ def record_video():
 if __name__ == "__main__":
     seed(24)
     pylab.ion()
-    pymanoid.init()
+    pymanoid.init(set_viewer=False)
+    robot = RobotModel(download_if_needed=True)
+    robot.set_transparency(0.3)
+
+    env = pymanoid.get_env()
+    env.SetViewer('qtcoin')
+    pymanoid.env.set_default_background_color()
     viewer = pymanoid.get_viewer()
     viewer.SetCamera([
         [5.39066316e-01,   3.61154816e-01,  -7.60903874e-01, 6.57677031e+00],
@@ -432,8 +439,6 @@ if __name__ == "__main__":
         [3.91593606e-03,  -9.04468691e-01,  -4.26522042e-01, 2.25269456e+00],
         [0.00000000e+00,   0.00000000e+00,   0.00000000e+00, 1.00000000e+00]])
 
-    robot = RobotModel(download_if_needed=True)
-    robot.set_transparency(0.3)
     contacts = generate_contacts()
     com = PointMass([0, 0, 0], robot.mass, visible=False)
     free_foot = FreeFoot(color='c', visible=False)
@@ -463,7 +468,7 @@ if __name__ == "__main__":
     sim.schedule(preview_buffer)
     sim.schedule(robot_ik)
 
-    sim.schedule_extra(camera_travel)
+    # sim.schedule_extra(camera_travel)
     sim.schedule_extra(com_traj_drawer)
     sim.schedule_extra(force_checker)
     sim.schedule_extra(left_foot_traj_drawer)
@@ -472,7 +477,7 @@ if __name__ == "__main__":
     # sim.schedule_extra(profile_plotter)
     sim.schedule_extra(right_foot_traj_drawer)
     # sim.schedule_extra(window_recorder)
-    sim.schedule_extra(sep_drawer)
+    # sim.schedule_extra(sep_drawer)
 
     if IPython.get_ipython() is None:
         IPython.embed()
