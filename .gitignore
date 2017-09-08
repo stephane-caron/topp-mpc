@@ -1,3 +1,4 @@
-.ropeproject
-*.pyc
 *.dae
+*.pyc
+.ropeproject
+gurobi.log

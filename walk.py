@@ -29,7 +29,7 @@ from numpy import arange, hstack, pi, sin, zeros
 from numpy.random import random, seed
 
 script_path = os.path.realpath(__file__)
-sys.path.append(os.path.dirname(script_path) + '/pymanoid')
+sys.path = [os.path.dirname(script_path) + '/pymanoid'] + sys.path
 
 import pymanoid
 
