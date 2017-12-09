@@ -22,7 +22,7 @@ model of the HRP-4 humanoid climbs up and down a series of hills.
 ## Installation
 
 On Ubuntu 14.04, you will need to [install
-OpenRAVE](https://scaron.info/teaching/installing-openrave-on-ubuntu-14.04.html).
+OpenRAVE](https://scaron.info/teaching/installing-openrave-on-ubuntu-14.04.html)
 and [TOPP](https://github.com/quangounet/TOPP).
 
 ## Usage
@@ -32,8 +32,8 @@ Run the main script ``./walk.py``. Then, you can
 - start simulations by typing ``sim.start()`` in the Python prompt, or
 - use ``sim.step(n)`` to run simulations in stepping mode for ``n`` steps.
 
-The state of all objects can be introspected using globals ``robot``, ``fsm``
-(state machine), ``mpc`` (preview controller), etc.
+The state of all objects can be inspected using the global variables ``robot``,
+``fsm`` (state machine) and ``mpc`` (preview controller).
 
 ### Robot model
 
