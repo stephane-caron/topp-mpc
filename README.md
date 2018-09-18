@@ -1,6 +1,6 @@
 # TOPP-MPC
 
-Source code for https://hal.archives-ouvertes.fr/hal-01363757
+Source code for https://hal.archives-ouvertes.fr/hal-01363757/document
 
 ## Abstract
 
@@ -18,6 +18,10 @@ implement the complete control pipeline and showcase it in simulations where a
 model of the HRP-4 humanoid climbs up and down a series of hills. 
 
 <img src=".figure.png" width="700" />
+
+Authors:
+[Stéphane Caron](https://scaron.info) and
+[Quang-Cuong Pham](https://www.normalesup.org/%7Epham/).
 
 ## Installation
 
