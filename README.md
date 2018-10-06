@@ -2,27 +2,6 @@
 
 Source code for https://hal.archives-ouvertes.fr/hal-01363757/document
 
-## Abstract
-
-We present a Model-Predictive Controller (MPC) for multi-contact locomotion
-where predictive optimizations are realized by Time-Optimal Path
-Parameterization (TOPP). The key feature of this design is that, contrary to
-existing planners where step timings are provided as inputs, here the timing
-between contact switches is computed as output to a linear optimization problem
-based on a dynamic model of the robot. This is particularly appealing to
-multi-contact locomotion, where proper timings depend on the terrain topology
-and suitable heuristics are unknown. Thanks to recent advances in multi-contact
-stability computations, we improve the performance of TOPP for COM
-trajectories, which allows us to integrate it into a fast control loop. We
-implement the complete control pipeline and showcase it in simulations where a
-model of the HRP-4 humanoid climbs up and down a series of hills. 
-
-<img src=".figure.png" width="700" />
-
-Authors:
-[Stéphane Caron](https://scaron.info) and
-[Quang-Cuong Pham](https://www.normalesup.org/%7Epham/).
-
 ## Installation
 
 On Ubuntu 14.04, you will need to [install
