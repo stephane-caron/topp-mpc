@@ -11,6 +11,7 @@ its submodule via:
 ```bash
 git clone --recursive https://github.com/stephane-caron/topp-mpc.git
 ```
+If you already have [pymanoid](https://github.com/stephane-caron/pymanoid) installed on your system, make sure to run the main script from the project folder directly (so that it uses the local rather than system version of pymanoid).
 
 ## Usage
 
