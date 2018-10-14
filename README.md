@@ -6,7 +6,11 @@ Source code for https://hal.archives-ouvertes.fr/hal-01363757/document
 
 On Ubuntu 14.04, you will need to [install
 OpenRAVE](https://scaron.info/teaching/installing-openrave-on-ubuntu-14.04.html)
-and [TOPP](https://github.com/quangounet/TOPP).
+and [TOPP](https://github.com/quangounet/TOPP). Then, clone this repository and 
+its submodule via:
+```bash
+git clone --recursive https://github.com/stephane-caron/topp-mpc.git
+```
 
 ## Usage
 
