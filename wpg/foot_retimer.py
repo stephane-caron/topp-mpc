@@ -22,7 +22,7 @@ from numpy import ones
 
 from TOPP.TOPPbindings import TOPPInstance
 from TOPP.Utilities import vect2str
-from hermite import interpolate_uab_hermite_topp
+from hermite import interpolate_houba_topp
 from pymanoid.misc import norm
 from pymanoid.rotations import rotation_matrix_from_quat
 from retimer import BodyRetimer
@@ -55,11 +55,11 @@ class FootRetimer(BodyRetimer):
         v1 = target_pd
         if norm(self.body.pd) > 1e-4:
             v0 = self.body.pd
-            path = interpolate_uab_hermite_topp(p0, p1, v0, v1)
+            path = interpolate_houba_topp(p0, p1, v0, v1)
             sd_beg = norm(v0) / norm(path.Evald(0.))
         else:  # choose initial direction
             v0 = 0.3 * self.body.t + 0.7 * self.body.n
-            path = interpolate_uab_hermite_topp(p0, p1, v0, v1)
+            path = interpolate_houba_topp(p0, p1, v0, v1)
             sd_beg = 0.
         return path, sd_beg
 

@@ -21,7 +21,7 @@
 import topp_param
 
 from TOPP.TOPPbindings import TOPPInstance
-from hermite import interpolate_uab_hermite_topp
+from hermite import interpolate_houba_topp
 from pymanoid.misc import norm, normalize
 from retimer import BodyRetimer
 
@@ -48,13 +48,13 @@ class COMRetimer(BodyRetimer):
         v1 = target_pd
         if norm(self.body.pd) > 1e-4:
             v0 = self.body.pd
-            path = interpolate_uab_hermite_topp(p0, p1, v0, v1, hack=True)
+            path = interpolate_houba_topp(p0, p1, v0, v1, hack=True)
             sd_beg = norm(v0) / norm(path.Evald(0.))
         else:  # choose initial direction
             delta = normalize(p1 - p0)
             ref = normalize(self.fsm.cur_stance.comd)
             v0 = 0.7 * delta + 0.3 * ref
-            path = interpolate_uab_hermite_topp(p0, p1, v0, v1, hack=True)
+            path = interpolate_houba_topp(p0, p1, v0, v1, hack=True)
             sd_beg = 0.
         return path, sd_beg
 

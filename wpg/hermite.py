@@ -65,13 +65,13 @@ def interpolate_ogh(p0, p1, v0, v1):
     return interpolate_cubic_hermite(p0, p1, a0 * v0, a1 * v1)
 
 
-def interpolate_uab_hermite(p0, p1, v0, v1, hack=False):
+def interpolate_houba(p0, p1, v0, v1, hack=False):
     """
     Interpolate a Hermite path between p0 and p1 with initial tangent parallel
-    to v0 and final tangent parallel to v1. The output path B(s) minimizes the
-    uniform acceleration bound:
+    to v0 and final tangent parallel to v1. The output path B(s) minimizes
+    (approximately) the uniform acceleration bound:
 
-        minimize M s.t. \\forall s \in [0, 1], \\|\\ddot{B}(s)\\|^s <= M
+        minimize M s.t. \\forall s \\in [0, 1], \\|\\ddot{B}(s)\\|^s <= M
 
     See the paper for details.
 
@@ -101,9 +101,9 @@ def interpolate_uab_hermite(p0, p1, v0, v1, hack=False):
     return interpolate_cubic_hermite(p0, p1, b0 * v0, b1 * v1)
 
 
-def interpolate_uab_hermite_topp(p0, p1, v0, v1, hack=False):
+def interpolate_houba_topp(p0, p1, v0, v1, hack=False):
     """Wrapper to ``get_ubound_hermite_curve`` for use with TOPP."""
-    C0, C1, C2, C3 = interpolate_uab_hermite(p0, p1, v0, v1, hack)
+    C0, C1, C2, C3 = interpolate_houba(p0, p1, v0, v1, hack)
     path_str = "%f\n%d" % (1., 3)
     for k in xrange(3):
         path_str += "\n%f %f %f %f" % (C0[k], C1[k], C2[k], C3[k])
